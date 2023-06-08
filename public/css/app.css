@@ -1,0 +1,32 @@
+body{
+  background-color: aqua;
+}
+.product-box{
+  border: 1px solid #161616;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.product-box--content{
+  max-width: 80%;
+}
+
+header{
+  height: 100px;
+  border-bottom: 1px solid #161616;
+}
+main{
+  padding-top: 50px;
+}
+footer{
+  border-top: 1px solid #161616;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
