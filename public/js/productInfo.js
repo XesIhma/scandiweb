@@ -1,14 +1,11 @@
 Vue.component('product-info', {
-  
+  props: ['product'],
   template: `
-  <div class="col-md-3">  
-    <div class="product-box">
+  <div class="col-md-3 card">  
+    <div class="product-box card-body">
       <div class="product-box--content">
         <input class="delete-checkbox" 
-                type="checkbox" 
-                v-model="checked"
-                :value="product.sku"
-                v-on:change="onCheckboxChange">
+                type="checkbox"  :checked="product.checked" @change="handleCheckboxChange">
         <h2>{{ product.sku }}</h2>
         <p>{{ product.name }}</p>
         <p>{{ product.price }}</p>
@@ -18,18 +15,14 @@ Vue.component('product-info', {
     </div>
   </div>
   `,
-  props: ['product'],
   data() {
     return {
       checked: false
     };
   },
   methods: {
-    onCheckboxChange(event) {
-      const sku = event.target.value; 
-      
-
-      this.$emit('checkbox-updated', sku);
+    handleCheckboxChange() {
+      this.$emit('checkbox-change', this.product);
     }
   }
   

@@ -1,12 +1,12 @@
 ﻿@extends( app )
 
-<products-header> </products-header>
+<products-header @mass-delete="handleMassDelete"> </products-header>
 <main>
   @items
   <div class="container">
-    <div class="row g-3">
+    <div class="row gx-3">
       <product-info v-for="product in products" 
-        :key="product.sku" :product="product">
+        :key="product.sku" :product="product" @checkbox-change="handleProductSelection">
       </product-info>
     </div>
   </div>

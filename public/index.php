@@ -4,8 +4,33 @@ use App\Classes\Dvd;
 use App\Classes\Book;
 use App\Classes\Furniture;
 use App\Classes\View;
-require_once realpath("../vendor/autoload.php");
 
+use App\Data\Database;
+require_once realpath("../vendor/autoload.php");
+require_once '../src/functions/helpers.php';
+
+
+$request = formatUrl($_SERVER['REQUEST_URI']);
+echo $request;
+if ($request == '/mass-delete'){
+  if (!($_SERVER['REQUEST_METHOD'] === 'POST')) {
+    echo 'You must specify a POST request';
+
+  }
+  if (!(isset($_POST['indexes']))) {
+    echo " indexes are required";
+  }
+  $indexesArray = $_POST['indexes'];
+    echo $indexesArray;
+
+}
+
+try {
+  $db = new Database();
+}catch (Exception $e) {
+  echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+$db->insertRow(array('<b>BK12503</b>', 'Czarujący ogród', 30, '300g'));
 
 $p1 = new Dvd("DV00100", "płyta", 100, "100MB");
 $p2 = new Dvd("DV00101", "płyta", 100, "700MB");
